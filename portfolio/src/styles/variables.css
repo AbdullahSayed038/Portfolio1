@@ -1,0 +1,102 @@
+:root {
+  --bg: #0e0f14; /* deep navy-charcoal */
+  --bg-soft: #13151d; /* section alternator */
+  --surface: #1a1d28; /* cards, panels */
+  --border: #2c2f40; /* subtle dividers */
+  --text-primary: #eae6dc; /* warm off-white */
+  --text-secondary: #b3b0a4; /* warm stone — readable over the starfield */
+  --text-soft: #d8d4c8; /* brighter body text for hero/over-canvas copy */
+  --accent: #d4a96a; /* warm sand/amber */
+  --accent-dim: #7a5f38; /* dimmed accent, hover states */
+  --tag-bg: #1f2235; /* skill/tech tags */
+
+  --bg-85: rgba(14, 15, 20, 0.85);
+  --bg-soft-85: rgba(19, 21, 29, 0.85);
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --max-width: 1080px;
+  --section-pad: clamp(5rem, 12vh, 8.5rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Fluid scaling: the root font-size shrinks with the viewport, and since
+     the whole design is rem-based, everything scales with it.
+     360px -> ~13px, 768px -> ~14.9px, caps at 16.5px (~1130px+). */
+  font-size: clamp(13px, 11.4px + 0.45vw, 16.5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent-dim);
+  color: var(--text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Veils: section overlays thin enough to keep the 3D world visible */
+:root {
+  --veil-light: rgba(14, 15, 20, 0.45);
+  --veil: rgba(14, 15, 20, 0.62);
+  --veil-soft: rgba(19, 21, 29, 0.55);
+  --veil-strong: rgba(19, 21, 29, 0.78);
+}
+
+body.dragging {
+  cursor: grabbing;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+:root {
+  --panel: rgba(16, 18, 26, 0.74);
+  --side-gutter: clamp(2rem, 7vw, 9rem);
+}

@@ -1,0 +1,207 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1.5rem 4rem;
+}
+
+.content {
+  position: relative;
+  max-width: 740px;
+}
+
+/* Soft scrim so the words always sit on quiet space, not raw stars */
+.content::before {
+  content: '';
+  position: absolute;
+  inset: -4rem -5rem;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(14, 15, 20, 0.8) 0%,
+    rgba(14, 15, 20, 0.4) 55%,
+    transparent 78%
+  );
+}
+
+.name {
+  text-shadow: 0 2px 24px rgba(14, 15, 20, 0.9);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 1.75rem;
+}
+
+.tagline {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--text-soft);
+  text-shadow: 0 1px 14px rgba(14, 15, 20, 0.95);
+  margin-bottom: 1.5rem;
+}
+
+.meta {
+  text-shadow: 0 1px 12px rgba(14, 15, 20, 0.95);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 2.75rem;
+}
+
+.ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primaryCta,
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+  padding: 0.7rem 1.35rem;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.primaryCta {
+  background-color: var(--accent);
+  color: var(--bg);
+  font-weight: 500;
+}
+
+.primaryCta:hover {
+  background-color: var(--accent-dim);
+  color: var(--text-primary);
+}
+
+.secondaryCta {
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.secondaryCta:hover {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .tagline br {
+    display: none;
+  }
+}
+
+@keyframes gentleBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+.bounce {
+  animation: gentleBounce 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bounce {
+    animation: none;
+  }
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.mouse {
+  width: 26px;
+  height: 42px;
+  border: 1.5px solid var(--text-secondary);
+  border-radius: 14px;
+  position: relative;
+}
+
+.mouse::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  width: 3px;
+  height: 7px;
+  border-radius: 2px;
+  background-color: var(--accent);
+  animation: wheel 1.7s ease-in-out infinite;
+}
+
+@keyframes wheel {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  70% {
+    opacity: 0;
+    transform: translate(-50%, 13px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+}
+
+.scrollLabel {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mouse::after {
+    animation: none;
+  }
+}
+
+/* Short screens: indicator would collide with the CTAs */
+@media (max-height: 640px) {
+  .scrollIndicator {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 5.5rem 1.25rem 4.5rem;
+  }
+
+  .ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primaryCta,
+  .secondaryCta {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,62 @@
+.bio {
+  background-color: var(--veil-light);
+  padding: var(--section-pad) 1.5rem;
+}
+
+.inner {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text {
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  line-height: 1.85;
+  color: var(--text-primary);
+  margin-bottom: 2.5rem;
+}
+
+.chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background-color: var(--tag-bg);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .chip {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+/* Side-panel layout: content left, 3D world open on the right */
+@media (min-width: 1100px) {
+  .bio {
+    background-color: transparent;
+  }
+
+  .inner {
+    margin: 0 auto 0 var(--side-gutter);
+    text-align: left;
+    background-color: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 3rem 2.75rem;
+  }
+
+  .chips {
+    justify-content: flex-start;
+  }
+}

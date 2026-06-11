@@ -1,0 +1,97 @@
+.projects {
+  background-color: var(--veil-soft);
+  padding: var(--section-pad) 1.5rem;
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.heading {
+  max-width: 620px;
+  margin-bottom: 3.5rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* Mid widths: classic two-column grid with the fifth card centered */
+@media (min-width: 861px) and (max-width: 1099px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: min(100%, 560px);
+    justify-self: center;
+  }
+}
+
+/* Side-panel layout: cards stack on the left, constellation lives on the right */
+@media (min-width: 1100px) {
+  .projects {
+    background-color: transparent;
+  }
+
+  .inner {
+    max-width: 620px;
+    margin: 0 auto 0 var(--side-gutter);
+  }
+
+  .title,
+  .subtitle {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.85);
+  }
+}
+
+/* ---- Zoom mode: tall section, sticky viewport, cards open per node ---- */
+.zoom {
+  height: 560vh;
+  padding: 0;
+  background-color: transparent;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.zoom .heading {
+  position: absolute;
+  top: 6.5rem;
+  left: var(--side-gutter);
+  margin: 0;
+  max-width: 480px;
+}
+
+.zoom .title,
+.zoom .subtitle {
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.85);
+}
+
+.zoomCard {
+  position: absolute;
+  top: 50%;
+  left: var(--side-gutter);
+  width: min(560px, 40vw);
+  will-change: opacity, transform;
+}

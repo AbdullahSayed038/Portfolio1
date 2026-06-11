@@ -1,0 +1,156 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  transition: background-color 0.35s ease, border-color 0.35s ease,
+    backdrop-filter 0.35s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  background-color: rgba(14, 15, 20, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--border);
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.link {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--text-primary);
+}
+
+.cvButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--bg);
+  background-color: var(--accent);
+  padding: 0.45rem 0.9rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.cvButton:hover {
+  background-color: var(--accent-dim);
+  color: var(--text-primary);
+}
+
+.menuToggle {
+  display: none;
+  color: var(--text-primary);
+  padding: 0.25rem;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+
+  .menuToggle {
+    display: inline-flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    background-color: rgba(14, 15, 20, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+
+  .mobileOpen {
+    max-height: 280px;
+    padding: 0.75rem 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobileLink {
+    padding: 0.6rem 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+
+  .mobileLink:hover {
+    color: var(--text-primary);
+  }
+
+  .mobileCv {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--bg);
+    background-color: var(--accent);
+    padding: 0.45rem 0.9rem;
+    border-radius: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .mobileMenu {
+    transition: none;
+  }
+}
+
+/* Nav slides in on first launch */
+@keyframes navIn {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+.nav {
+  animation: navIn 0.9s ease 0.25s backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav {
+    animation: none;
+  }
+}
